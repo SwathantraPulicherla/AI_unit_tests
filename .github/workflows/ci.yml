@@ -38,10 +38,9 @@ jobs:
           genhtml coverage_calculator.info --output-directory coverage_html
 
       - name: Upload coverage report artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: coverage-html
-          path: coverage_html/
+          path: coverage_html/   # must match the folder with your HTML report
 
   deploy:
     needs: build-test-coverage
