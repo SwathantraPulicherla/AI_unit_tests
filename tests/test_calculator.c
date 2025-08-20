@@ -24,6 +24,7 @@ int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_addition);
     RUN_TEST(test_subtraction);
-    RUN_TEST(test_multiplication); // <-- Add this line
+    RUN_TEST(test_multiplication);
+    RUN_TEST(test_division); 
     return UNITY_END();
 }
