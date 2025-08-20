@@ -1,0 +1,9 @@
+        -:    0:Source:calculator.c
+        -:    0:Graph:test_calculator-calculator.gcno
+        -:    0:Data:test_calculator-calculator.gcda
+        -:    0:Runs:1
+        -:    1:#include "calculator.h"
+function add called 1 returned 100% blocks executed 100%
+        1:    2:int add(int a, int b) { return a + b; }
+function subtract called 1 returned 100% blocks executed 100%
+        1:    3:int subtract(int a, int b) { return a - b; }

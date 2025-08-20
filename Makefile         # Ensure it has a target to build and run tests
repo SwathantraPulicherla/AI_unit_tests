@@ -1,0 +1,13 @@
+TARGETS = all test
+
+CC = gcc
+CFLAGS = -Itests/unity -I.
+
+all: test
+
+test: tests/test_calculator.c
+	$(CC) $(CFLAGS) -o test_runner tests/test_calculator.c tests/unity/*.c
+	./test_runner
+
+clean:
+	rm -f test_runner
