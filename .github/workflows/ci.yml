@@ -33,7 +33,7 @@ jobs:
       - name: Generate coverage info
         run: |
           lcov --capture --directory . --output-file coverage.info
-          lcov --remove coverage.info 'tests/*' '*/unity/*' '/usr/*' --output-file coverage_filtered.info
+          lcov --remove coverage.info '*/tests/*' '*/unity/*' '/usr/*' --output-file coverage_filtered.info
           lcov --extract coverage_filtered.info '*/calculator.c' --output-file coverage_calculator.info
           genhtml coverage_calculator.info --output-directory coverage_html
 
