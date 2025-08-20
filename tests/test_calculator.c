@@ -16,6 +16,10 @@ void test_multiplication(void) { // <-- Add this test
     TEST_ASSERT_EQUAL(6, multiply(2, 3));
 }
 
+void test_division(void) { // <-- Add this test
+    TEST_ASSERT_EQUAL(6, divide(9, 3));
+}
+
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_addition);
