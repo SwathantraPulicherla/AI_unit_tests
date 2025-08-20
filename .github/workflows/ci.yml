@@ -37,11 +37,22 @@ jobs:
           lcov --extract coverage_filtered.info '*/calculator.c' --output-file coverage_calculator.info
           genhtml coverage_calculator.info --output-directory coverage_html
 
-      - name: Commit and push coverage to repo
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          rm -rf coverage_html/.git   # safety in case genhtml adds weird metadata
-          git add coverage_html
-          git commit -m "Update coverage report [skip ci]" || echo "No changes to commit"
-          git push
+      - name: Upload coverage report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-html
+          path: coverage_html/
+
+  deploy:
+    needs: build-test-coverage
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
