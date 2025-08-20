@@ -1,0 +1,44 @@
+name: C/C++ CI with Coverage
+
+on:
+  push:
+    paths:
+      - '**.c'
+      - '**.h'
+      - '**.yml'
+  pull_request:
+    paths:
+      - '**.c'
+      - '**.h'
+      - '**.yml'
+  workflow_dispatch:
+
+jobs:
+  build-test-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y lcov gcc
+
+      - name: Build with coverage flags
+        run: |
+          gcc -Itests/unity -I. -fprofile-arcs -ftest-coverage tests/test_calculator.c calculator.c tests/unity/unity.c -o test_calculator
+
+      - name: Run unit tests
+        run: ./test_calculator
+
+      - name: Generate coverage info
+        run: |
+          lcov --capture --directory . --output-file coverage.info
+          lcov --remove coverage.info 'tests/*' '*/unity/*' '/usr/*' --output-file coverage_filtered.info
+          lcov --extract coverage_filtered.info '*/calculator.c' --output-file coverage_calculator.info
+          genhtml coverage_calculator.info --output-directory coverage_html
+
+      - name: Upload coverage report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-html
+          path: coverage_html/
