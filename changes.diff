@@ -1,0 +1,25 @@
+diff --git a/calculator.c b/calculator.c
+index 7ba46bb..8d29ff2 100644
+--- a/calculator.c
++++ b/calculator.c
+@@ -2,4 +2,5 @@
+ int add(int a, int b) { return a + b; }
+ int subtract(int a, int b) { return a - b; }
+ int multiply(int a, int b) { return a * b; }
+-int divide(int a, int b) { return a / b; }
+\ No newline at end of file
++int divide(int a, int b) { return a / b; }
++int modulo(int a, int b) { return a % b; }
+\ No newline at end of file
+diff --git a/tests/test_calculator.c b/tests/test_calculator.c
+index a2cdc2c..c3c548e 100644
+--- a/tests/test_calculator.c
++++ b/tests/test_calculator.c
+@@ -27,4 +27,5 @@ int main(void) {
+     RUN_TEST(test_multiplication);
+     RUN_TEST(test_division); 
+     return UNITY_END();
+-}
+\ No newline at end of file
++}
++

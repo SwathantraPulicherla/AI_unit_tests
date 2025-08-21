@@ -28,3 +28,7 @@ int main(void) {
     RUN_TEST(test_division); 
     return UNITY_END();
 }
+
+void test_modulo() {
+    // Copilot can suggest test here
+}
