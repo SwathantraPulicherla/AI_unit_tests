@@ -20,6 +20,11 @@ void test_division(void) { // <-- Add this test
     TEST_ASSERT_EQUAL(3, divide(9, 3));
 }
 
+void test_modulo(void) {
+    // Copilot can suggest test here
+    TEST_ASSERT_EQUAL(1, modulo(11, 5));
+}
+
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_addition);
@@ -31,7 +36,4 @@ int main(void) {
 }
 
 
-void test_modulo() {
-    // Copilot can suggest test here
-    TEST_ASSERT_EQUAL(1, modulo(11, 5));
-}
+
