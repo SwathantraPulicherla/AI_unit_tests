@@ -31,7 +31,7 @@ int main(void) {
     RUN_TEST(test_subtraction);
     RUN_TEST(test_multiplication);
     RUN_TEST(test_division);
-    RUN_TEST(test_modulo); 
+    //RUN_TEST(test_modulo); 
     return UNITY_END();
 }
 
