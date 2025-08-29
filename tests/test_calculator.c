@@ -29,6 +29,8 @@ int main(void) {
     return UNITY_END();
 }
 
+
 void test_modulo() {
     // Copilot can suggest test here
+    TEST_ASSERT_EQUAL(1, modulo(11, 5));
 }
